@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Geolocator Example</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="scripts/geolocator.js"></script>
+
+</head>
+
+<body>
+    <div id="newpage23" data-role="page">
+
+        <script type="text/javascript">
+
+            $("#newpage23").bind("pageshow", function (event) {
+
+                var html5Options = { enableHighAccuracy: true, timeout: 1000, maximumAge: 0 }
+                geolocator.locate(onGeoSuccess, onGeoError, 1, html5Options, 'map-canvas');
+
+                // Configure controls
+                var cmbSource = document.getElementById('cmb-source'),
+                    btnLocateByIP = document.getElementById('btn-locate-ip'),
+                    btnLocateHTML5 = document.getElementById('btn-locate'),
+                    chkFallback = document.getElementById('chk-fallback');
+
+                // Click Event Handlers
+                btnLocateByIP.onclick = function () {
+                    geolocator.locateByIP(onGeoSuccess, onGeoError, cmbSource.selectedIndex, 'map-canvas');
+                }
+
+                btnLocateHTML5.onclick = function () {
+                    var html5Options = { enableHighAccuracy: true, timeout: 6000, maximumAge: 0 },
+                        ipFallbackIndex = chkFallback.checked ? cmbSource.selectedIndex : -1;
+                    geolocator.locate(onGeoSuccess, onGeoError, ipFallbackIndex, html5Options, 'map-canvas');
+                    console.log('IP Fallback is ' + (ipFallbackIndex === -1 ? 'disabled' : 'enabled'));
+                }
+
+            });
+
+            function disp(pos) {
+                $('.lat-view').html(pos.coords.latitude);
+                $('.long-view').html(pos.coords.longitude);
+
+                var mapwidth = 270; // a mungy compromise between the 2 sizes
+                var mapheight = 290; // since we can't get w / h dynamically
+                map.src = "http://maps.googleapis.com/maps/api/staticmap?center=" +
+                           pos.coords.latitude +
+                           "," + pos.coords.longitude +
+                           "&zoom=18&size=" + mapwidth + "x" + mapheight + "&maptype=roadmap&markers=color:green%7C" +
+                           pos.coords.latitude +
+                           "," + pos.coords.longitude + "&sensor=false";
+            }
+
+            function onGeoSuccess(location) {
+                console.log(location);
+                var strLocation = '<b>Latitude:</b> ' + location.coords.latitude + '<br />' +
+                                '<b>Longitude:</b> ' + location.coords.longitude + '<br />' +
+                                '<b>City:</b> ' + location.address.city + '<br />' +
+                                '<b>Country:</b> ' + location.address.country + '<br />' +
+                                '<b>Country Code:</b> ' + location.address.countryCode + '<br />' +
+                                '<b>Region:</b> ' + location.address.region + '<br />' +
+                                '<br /><span class="info">See console logs for the full properties of the "location" object.</span>'
+                document.getElementById('geo-details').innerHTML = strLocation;
+                console.log(location.coords.latitude);
+                console.log(location.coords.longitude);
+                console.log(location.address.city);
+                console.log(location.address.country);
+                console.log(location.address.countryCode);
+                console.log(location.address.region);
+
+            }
+            // Error Callback
+            function onGeoError(error) {
+                console.log(error);
+                // To check if this is a HTML5 `PositionError`:
+                // console.log(geolocator.isPositionError(error));
+            }
+
+        </script>
+
+
+
+        <p class="title">Geolocator Example</p>
+        <div id="container">
+            <div id="controls">
+                Geo IP Source: <select id="cmb-source">
+                    <option value="0">Free GeoIP</option>
+                    <option value="1">Geo Plugin</option>
+                    <option selected value="2">Wikimedia</option>
+                </select>&nbsp;<button id="btn-locate-ip">Locate by IP</button> | <button id="btn-locate">Locate (HTML5)</button>
+                <input id="chk-fallback" type="checkbox" checked /> Fallback to IP
+            </div>
+            <div id="map-canvas"></div>
+            <div id="geo-details"></div>
+        </div>
+    </div>
+</body>
+
+</html>

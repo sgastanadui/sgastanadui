@@ -18,7 +18,6 @@
         document.addEventListener('pause', onPause.bind(this), false);
         document.addEventListener('resume', onResume.bind(this), false);
 
-        $("#btnLogin").off("click");
         $("#btnLogin").click(function () {
             //var params = { a: $("#first").val(), b: $("#second").val() };
             //var params = "{ UserName: 'Santi', Password: 'DDDD' }";
@@ -118,6 +117,7 @@
             });
 
         });
+
 
     };
 
