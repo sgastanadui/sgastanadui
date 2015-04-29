@@ -9,13 +9,17 @@
     <title>Working G</title>
 </head>
 <body>
-    <div data-role="header" data-position="fixed" style="background-color:#0065B3">
-        <a class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-l ui-btn-icon-left" href="index.html"></a>
+    <div id="newpagegeo" data-role="page">
+        <div data-role="header" data-position="fixed" style="background-color:#0065B3">
+            <a class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-l ui-btn-icon-left" href="index.html"></a>
+        </div>
+        <div data-role="content" style="background-color:white;">
+            <div id="map"></div>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script src="scripts/index1.js"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBMFu3Bx3jFMi-3sDp-uj7q-TrQbGAZF9g&sensor=false"> </script>
+        <!--<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyASBg0-29KcS1C1a7scro3QlwNZivUAtoE&sensor=false"> </script>-->
     </div>
-    <div id="map"></div>
-    <script type="text/javascript" src="cordova.js"></script>
-    <script src="scripts/index1.js"></script>
-    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCTD-AH0QOjaaXSvqCAQhRDQ81L36x6p-A&sensor=false"> </script>
-    <!--<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyASBg0-29KcS1C1a7scro3QlwNZivUAtoE&sensor=false"> </script>-->
 </body>
 </html>

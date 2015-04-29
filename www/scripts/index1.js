@@ -16,18 +16,24 @@
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
         // app.receivedEvent('deviceready');
-        //alert('gfffh');
+        alert('ver mapa');
         navigator.geolocation.getCurrentPosition(app.onSuccess, app.onError);
     },
 
     onSuccess: function (position) {
         var longitude = position.coords.longitude;
         var latitude = position.coords.latitude;
+        //*******************************
         latitude = 27.985856;
         longitude = -81.959907
-        console.log('longitude: ' + longitude);
-        console.log('latitude: ' + latitude);
+        //*******************************
+        alert('Longitude: ' + longitude + ' Latitude: ' + latitude);
+        //*******************************
+        //console.log('longitude: ' + longitude);
+        //console.log('latitude: ' + latitude);
         var latLong = new google.maps.LatLng(latitude, longitude);
+        //*******************************
+        alert('Visualizando Mapa');
         //var mapOptions = {
         //    center: latLong,
         //    zoom: 13,
