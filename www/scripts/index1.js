@@ -16,7 +16,7 @@
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
         // app.receivedEvent('deviceready');
-        alert('ver mapa');
+        alert(window.location.href);
         navigator.geolocation.getCurrentPosition(app.onSuccess, app.onError);
     },
 
