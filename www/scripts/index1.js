@@ -27,11 +27,13 @@
         latitude = 27.985856;
         longitude = -81.959907
         //*******************************
-        //alert('Longitude: ' + longitude + ' Latitude: ' + latitude);
+        alert('Longitude: ' + longitude + ' Latitude: ' + latitude);
         //*******************************
         //console.log('longitude: ' + longitude);
         //console.log('latitude: ' + latitude);
-        var latLong = new google.maps.LatLng(latitude, longitude);
+        //var latLong = new google.maps.LatLng(latitude, longitude);
+        var latLong = new plugin.google.maps.LatLng(latitude, longitude);
+        
         //*******************************
         alert('Visualizando Mapa');
         //var mapOptions = {
