@@ -88,6 +88,9 @@
                 $("#span2").html("" + Companyname + "");
                 $("#spanContact").html("" + ContactName + "");
 
+                $('#tab1').click();
+
+
                 var wcfServiceUrl = "http://23.253.204.98/wcfphonegap/AutenticationMobile.svc/";
                 //var wcfServiceUrl = "http://localhost:10786/AutenticationMobile.svc/";
 
@@ -244,11 +247,12 @@
                                 $("#select_item").val('Select');
                                 $("#textarea-1").val('');
                                 //*************************
-                                var wpurl = 'commentsert.html?IdCompany=' + IdCompany + '&IdContact=' + IdContact + '';
+                                //var wpurl = 'commentsert.html?IdCompany=' + IdCompany + '&IdContact=' + IdContact + '';
                                 //*************************
-                                $("#popupDetail").attr('href', wpurl)
-                                console.log('wpurl: ' + wpurl);
-                                $("#popupDetail").click();
+                                //$("#popupDetail").attr('href', wpurl)
+                                //console.log('wpurl: ' + wpurl);
+                                //$("#popupDetail").click();
+                                $("#tab1").click();
                                 //*************************
                                 //$.mobile.changePage("default.html");
                                 //window.location.href = 'default.html';
@@ -278,8 +282,8 @@
         <div data-role="tabs">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#one" data-ajax="true" data-theme="a">ERT Dashboard</a></li>
-                    <li><a href="#two" data-ajax="false" data-theme="a">Add Comments</a></li>
+                    <li><a href="#one" data-ajax="true" data-theme="a" id="tab1">ERT Dashboard</a></li>
+                    <li><a href="#two" data-ajax="false" data-theme="a" id="tab2">Add Comments</a></li>
                 </ul>
             </div>
 
