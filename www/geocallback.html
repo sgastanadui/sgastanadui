@@ -21,6 +21,19 @@
                 loadScript();
             });
 
+            function detectBrowser() {
+                var useragent = navigator.userAgent;
+                var mapdiv = document.getElementById("map_canvas");
+
+                if (useragent.indexOf('iPhone') != -1 || useragent.indexOf('Android') != -1) {
+                    mapdiv.style.width = '100%';
+                    mapdiv.style.height = '100%';
+                } else {
+                    mapdiv.style.width = '600px';
+                    mapdiv.style.height = '800px';
+                }
+            }
+
             function initialize() {
 
                 try {
@@ -86,7 +99,8 @@
 
                 var googleMaps = document.createElement("script");
                 googleMaps.type = "text/javascript";
-                googleMaps.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD6s7cppDSL6eUC7yOUZZ6kTbX-2uQEXa0&sensor=false&callback=initialize";
+                googleMaps.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBtTcw1C9SfDbgy2aKfOt_5N8m2Ltpqdu8&sensor=false&callback=initialize";
+                //googleMaps.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD6s7cppDSL6eUC7yOUZZ6kTbX-2uQEXa0&sensor=false&callback=initialize";
                 document.body.appendChild(googleMaps);
 
 
@@ -102,7 +116,7 @@
                 //    };
 
                 //    alert('entro 5');
-                //    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+                //    var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
                 //};
                 //$("head").append(s);
