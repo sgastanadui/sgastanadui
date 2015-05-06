@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Asynchronous Loading</title>
+    <title>Asynchronous Loading </title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <style>
@@ -22,7 +22,7 @@
             });
 
             function initialize() {
-                alert('visualizando mapa1');
+
                 try {
                     var latLong = new google.maps.LatLng(27.985856, -81.959907);
                     var mapOptions = {
@@ -59,7 +59,7 @@
                         }
                     };
 
-                    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+                    var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
                     var marker = new google.maps.Marker({
                         position: latLong,
@@ -71,7 +71,8 @@
                         draggable: true
                     });
 
-                    alert('visualizando mapa2');
+                    alert('visualizando mapa');
+
                 } catch (ex) {
                     alert(ex.message);
                 }
@@ -85,7 +86,7 @@
 
                 var googleMaps = document.createElement("script");
                 googleMaps.type = "text/javascript";
-                googleMaps.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyCifsHZynhkdinZIB-4Hz5s-fnMvcjnSbg&sensor=true&callback=initialize";
+                googleMaps.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyBcJzo8GpAqy76BGtYfEtWkTe6WOLyXe_k&sensor=true&callback=initialize";
                 document.body.appendChild(googleMaps);
 
 
@@ -116,7 +117,7 @@
         </div>
 
         <div id="container">
-            <div id="map-canvas"></div>
+            <div id="map_canvas"></div>
         </div>
 
     </div>
