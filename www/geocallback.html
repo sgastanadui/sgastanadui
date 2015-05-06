@@ -23,25 +23,70 @@
 
             function initialize() {
                 alert('visualizando mapa1');
-                var mapOptions = {
-                    zoom: 8,
-                    center: new google.maps.LatLng(-34.397, 150.644)
-                };
-                alert('visualizando mapa2');
-                var map = new google.maps.Map(document.getElementById('map-canvas'),
-                    mapOptions);
+                try {
+                    var latLong = new google.maps.LatLng(27.985856, -81.959907);
+                    var mapOptions = {
+                        zoom: 14,
+                        center: latLong,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                        backgroundColor: '#ffffff',
+                        noClear: true,
+                        disableDefaultUI: false,
+                        keyboardShortcuts: true,
+                        disableDoubleClickZoom: false,
+                        draggable: true,
+                        scrollwheel: true,
+                        draggableCursor: 'pointer',
+                        draggingCursor: 'crosshair',
+                        mapTypeControl: true,
+                        //mapTypeControlOptions: {
+                        //    style: google.maps.MapTypeControlStyle.HORIZONTAL_MENU,
+                        //    position: google.maps.ControlPosition.TOP_LEFT,
+                        //    mapTypeIds: [
+                        //        google.maps.MapTypeId.ROADMAP
+                        //    ]
+                        //},
+                        navigationControl: true,
+                        streetViewControl: true,
+                        navigationControlOptions: {
+                            position: google.maps.ControlPosition.TOP_LEFT,
+                            style: google.maps.NavigationControlStyle.ANDROID
+                        },
+                        scaleControl: true,
+                        scaleControlOptions: {
+                            position: google.maps.ControlPosition.TOP_LEFT,
+                            style: google.maps.ScaleControlStyle.DEFAULT
+                        }
+                    };
+
+                    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+                    var marker = new google.maps.Marker({
+                        position: latLong,
+                        map: map,
+                        animation: google.maps.Animation.BOUNCE,
+                        title: 'Insight Risk Technologies, LLC',
+                        icon: 'https://www.chancesrmis.com/um-usa/img/Logos/chancesr.jpg',
+                        cursor: 'pointer',
+                        draggable: true
+                    });
+
+                    alert('visualizando mapa2');
+                } catch (ex) {
+                    alert(ex.message);
+                }
             }
 
             function loadScript() {
-                var script = document.createElement('script');
-                script.type = 'text/javascript';
-                script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&callback=initialize';
-                document.body.appendChild(script);
+                //var script = document.createElement('script');
+                //script.type = 'text/javascript';
+                //script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&callback=initialize';
+                //document.body.appendChild(script);
 
-                //var googleMaps = document.createElement("script");
-                //googleMaps.type = "text/javascript";
-                //googleMaps.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyBMFu3Bx3jFMi-3sDp-uj7q-TrQbGAZF9g&sensor=true&callback=initialize";
-                //document.body.appendChild(googleMaps);
+                var googleMaps = document.createElement("script");
+                googleMaps.type = "text/javascript";
+                googleMaps.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyCifsHZynhkdinZIB-4Hz5s-fnMvcjnSbg&sensor=true&callback=initialize";
+                document.body.appendChild(googleMaps);
 
 
                 //var s = document.createElement("script");
