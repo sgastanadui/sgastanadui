@@ -111,7 +111,7 @@
                         html = html.trim() + '<tr>';
                         html = html.trim() + ' <th style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">Status</th>';
                         html = html.trim() + ' <th style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">Comments</th>';
-                        html = html.trim() + ' <th style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">DateTime</th>';
+                        html = html.trim() + ' <th style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">Date/Time</th>';
                         html = html.trim() + '</tr>';
                         html = html.trim() + '</thead>';
                         html = html.trim() + '<tbody>';
@@ -153,7 +153,8 @@
 
         <!-- page-->
         <div data-role="header" data-position="fixed" style="background-color:#0065B3;color:white;font-size:11px;font-weight:normal;">
-            <br /><h1 id="span1"></h1>
+            <h1 id="span1"></h1>
+            <a href="#" data-rel="back" class="ui-btn-left ui-btn ui-icon-back ui-btn-icon-notext ui-shadow ui-corner-all" style="background-color:#0065B3" data-role="button" role="button">Back</a>
         </div><!-- /header -->
 
         <div class="ui-content" role="main">
@@ -181,11 +182,11 @@
                 </tbody>
             </table>-->
             <img id="imgAjaxLoaderComments" class="ajaxLoader" src="images/ajax-loader.gif" />
-            <a href="commentsert.html" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-inline" data-rel="back">Back</a>
+            <!--<a href="default.html" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-inline" data-rel="back">Back</a>-->
         </div>
 
         <div class="jqm-footer" data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">
-            <p>©ERT Insight Risk Technologies,LC <span class="jqm-version"></span></p>
+            <p>©ERT Insight Risk Technologies,LLC <span class="jqm-version"></span></p>
         </div>
     </div>
 </body>

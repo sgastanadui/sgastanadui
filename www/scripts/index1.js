@@ -16,32 +16,32 @@
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
         // app.receivedEvent('deviceready');
-        //alert(window.location.href);
+        //alert('gfffh');
         navigator.geolocation.getCurrentPosition(app.onSuccess, app.onError);
     },
 
     onSuccess: function (position) {
         var longitude = position.coords.longitude;
         var latitude = position.coords.latitude;
-        //*******************************
         latitude = 27.985856;
         longitude = -81.959907
-        //*******************************
-        alert('Longitude: ' + longitude + ' Latitude: ' + latitude);
-        //*******************************
-        //console.log('longitude: ' + longitude);
-        //console.log('latitude: ' + latitude);
-        //var latLong = new google.maps.LatLng(latitude, longitude);
-        var latLong = new plugin.google.maps.LatLng(latitude, longitude);
+        console.log('longitude: ' + longitude);
+        console.log('latitude: ' + latitude);
+        var latLong;
+        try{
+            latLong = new google.maps.LatLng(latitude, longitude);
+        } catch (ex) {
+            alert('message err: ' + ex.message + ' err: ' + ex.number);
+        } finally {
+
+        }
         
-        //*******************************
-        alert('Visualizando Mapa');
         //var mapOptions = {
         //    center: latLong,
         //    zoom: 13,
         //    mapTypeId: google.maps.MapTypeId.ROADMAP
         //};
-        //console.log('paso 1');
+        console.log('paso 1');
         //pintamos el mapa
         var mapOptions = {
             zoom: 14,
