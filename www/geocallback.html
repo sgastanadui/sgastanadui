@@ -18,32 +18,30 @@
         <script type="text/javascript">
 
             $("#newpagegeo").bind("pageshow", function (event) {
-                alert('entro 1');
                 loadScript();
             });
 
             function initialize() {
-                alert('entro 4');
+                alert('visualizando mapa1');
                 var mapOptions = {
                     zoom: 8,
                     center: new google.maps.LatLng(-34.397, 150.644)
                 };
-                alert('entro 5');
+                alert('visualizando mapa2');
                 var map = new google.maps.Map(document.getElementById('map-canvas'),
                     mapOptions);
             }
 
             function loadScript() {
-                alert('entro 2');
-                //var script = document.createElement('script');
-                //script.type = 'text/javascript';
-                //script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&callback=initialize';
-                //document.body.appendChild(script);
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&callback=initialize';
+                document.body.appendChild(script);
 
-                var googleMaps = document.createElement("script");
-                googleMaps.type = "text/javascript";
-                googleMaps.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyBMFu3Bx3jFMi-3sDp-uj7q-TrQbGAZF9g&sensor=true&callback=initialize";
-                document.body.appendChild(googleMaps);
+                //var googleMaps = document.createElement("script");
+                //googleMaps.type = "text/javascript";
+                //googleMaps.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyBMFu3Bx3jFMi-3sDp-uj7q-TrQbGAZF9g&sensor=true&callback=initialize";
+                //document.body.appendChild(googleMaps);
 
 
                 //var s = document.createElement("script");
@@ -63,7 +61,6 @@
                 //};
                 //$("head").append(s);
                         
-                alert('entro 3');
             }
 
 
