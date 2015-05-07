@@ -17,107 +17,7 @@
         // Handle the Cordova pause and resume events
         document.addEventListener('pause', onPause.bind(this), false);
         document.addEventListener('resume', onResume.bind(this), false);
-
-        $("#btnLogin").click(function () {
-            //var params = { a: $("#first").val(), b: $("#second").val() };
-            //var params = "{ UserName: 'Santi', Password: 'DDDD' }";
-            //var parametros = { "UserName": $("#txtUsername").val(), "Password": $("#txtPassword").val() };
-
-            if ($("#txtUsername").val().trim() == "") {
-                //navigator.notification.alert("Enter a Username", function () { });
-                alert("Enter a Username");
-                return false;
-            }
-
-            if ($("#txtPassword").val().trim() == "") {
-                //navigator.notification.alert("Enter a Password", function () { });
-                alert("Enter a Password");
-                return false;
-            }
-
-            //wcfServiceUrl = "https://www.chancesrmis.com/wcfphonegap/AutenticationMobile.svc/";
-            wcfServiceUrl = "http://23.253.204.98/wcfphonegap/AutenticationMobile.svc/";
-            //wcfServiceUrl = "http://localhost:10786/AutenticationMobile.svc/";
-            //wcfServiceUrl = "http://localhost:10786/UserAutentication.svc/";
-
-            //var urlk1 = wcfServiceUrl + "Login?UserName=" + $("#txtUsername").val() + "&Password=" + $("#txtPassword").val() + "";
-            var urlk1 = wcfServiceUrl + "AutenticationUser?IdUsername=" + $("#txtUsername").val() + "&Password=" + $("#txtPassword").val() + "&IdAplication=2";
-            //var urlk1 = wcfServiceUrl + "Login?UserName=" + JSON.stringify($("#txtUsername").val()) + "&Password=" + JSON.stringify($("#txtPassword").val()) + "";
-
-            $.ajax({
-                cache: true,
-                url: urlk1,
-                crossDomain: true,
-                //data: "{ UserName: " + JSON.stringify($("#txtUsername").val()) + ", Password: " + JSON.stringify($("#txtPassword").val()) + " }",
-                data: "{ UserName: " + $("#txtUsername").val() + ", Password: " + $("#txtPassword").val() + ", IdAplication: 4 }",
-                type: "GET",
-                jsonpCallback: "UserApplication",
-                //contentType: "application/javascript",
-                contentType: "application/json; charset=utf-8",
-                dataType: "jsonp",
-                beforeSend: function () {
-                    //$("#results").html("Procesando, espere por favor...");
-                    //$('#results').html("<img src='images/ajax-loader.gif' />");
-                    //$("#results").addClass("loading");
-                    $("#imgAjaxLoader").show();
-                },
-                error: function (xhr, textStatus, err) {
-                    var mensaje = "readyState: " + xhr.readyState + "\n";
-                    mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
-                    mensaje = mensaje + "status: " + xhr.status + "\n";
-                    mensaje = mensaje + "text status: " + textStatus + "\n";
-                    mensaje = mensaje + "error: " + err + "\n";
-                    alert(mensaje);
-                    $('#results').html("");
-                },
-                success: function (obj) {
-                    //$.each(menu, populateDropdown); // must call function as var
-                    //populateDropdown(obj);
-                    if (obj.AutenticationUserResult.error.Descripcion == '') {
-                        //window.localStorage["username"] = obj.AutenticationUserResult.IdUsuario;
-                        window.localStorage["IdCompany"] = obj.AutenticationUserResult.IdCompany;
-                        //window.localStorage["IdGroupCompany"] = obj.AutenticationUserResult.IdGroupCompany;
-                        window.localStorage["CompanyName"] = obj.AutenticationUserResult.CompanyName;
-                        window.localStorage["IdContact"] = obj.AutenticationUserResult.IdContact;
-                        window.localStorage["ContactName"] = obj.AutenticationUserResult.ContactName;
-                        //window.localStorage["Email"] = obj.AutenticationUserResult.Email;
-                        $('#results').html("");
-                        //$.mobile.changePage("default.html");
-                        //$.mobile.changePage("default.html?param1=" + encodeURIComponent(obj.AutenticationUserResult.IdCompany) + "&company="+ encodeURIComponent(obj.AutenticationUserResult.CompanyName) +"");
-                        //$.mobile.changePage("default.html", { data: { 'param1': IdCompany } });
-
-                        var argValue = obj.AutenticationUserResult.CompanyName;
-                        //$.mobile.changePage("default.html", { data: { param1: argValue } });
-                        //$.mobile.changePage("default.html");
-                        window.location.href = 'default.html';
-                    } else {
-                        switch (obj.AutenticationUserResult.error.Descripcion) {
-                            case '1':
-                                $('#results').html("<span>Inactive Company. Please contact administrator.</span>");
-                                break;
-                            case '2':
-                                $('#results').html("<span>Incorrect password.</span>");
-                                break;
-                            case '3':
-                                $('#results').html("<span>Inactive User. Please contact administrator.</span>");
-                                break;
-                            case '4':
-                                $('#results').html("<span>Username not found.</span>");
-                                break;
-                        }
-                    }
-
-                    //var userId = localStorage.getItem("userId");
-                    //if (userId == null || userId == 0) { jQT.goTo("#login"); }
-
-                },
-                complete: function () {
-                    $("#imgAjaxLoader").hide();
-                }
-            });
-
-        });
-
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
 
     };
 
@@ -130,6 +30,67 @@
     };
 
     var wcfServiceUrl = "http://localhost:43070/Autentication.svc/";
+
+
+    function onSuccess(position) {
+                alert('ingreso 3');
+                var longitude = position.coords.longitude;
+                var latitude = position.coords.latitude;
+                var latLong = new google.maps.LatLng(27.985856, -81.959907);
+
+                var mapOptions = {
+                    zoom: 14,
+                    center: latLong,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    backgroundColor: '#ffffff',
+                    noClear: true,
+                    disableDefaultUI: false,
+                    keyboardShortcuts: true,
+                    disableDoubleClickZoom: false,
+                    draggable: true,
+                    scrollwheel: true,
+                    draggableCursor: 'pointer',
+                    draggingCursor: 'crosshair',
+                    mapTypeControl: true,
+                    //mapTypeControlOptions: {
+                    //    style: google.maps.MapTypeControlStyle.HORIZONTAL_MENU,
+                    //    position: google.maps.ControlPosition.TOP_LEFT,
+                    //    mapTypeIds: [
+                    //        google.maps.MapTypeId.ROADMAP
+                    //    ]
+                    //},
+                    navigationControl: true,
+                    streetViewControl: true,
+                    navigationControlOptions: {
+                        position: google.maps.ControlPosition.TOP_LEFT,
+                        style: google.maps.NavigationControlStyle.ANDROID
+                    },
+                    scaleControl: true,
+                    scaleControlOptions: {
+                        position: google.maps.ControlPosition.TOP_LEFT,
+                        style: google.maps.ScaleControlStyle.DEFAULT
+                    }
+                };
+
+                var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+                var marker = new google.maps.Marker({
+                    position: latLong,
+                    map: map,
+                    animation: google.maps.Animation.BOUNCE,
+                    title: 'Insight Risk Technologies, LLC',
+                    icon: 'https://www.chancesrmis.com/um-usa/img/Logos/chancesr.jpg',
+                    cursor: 'pointer',
+                    draggable: true
+                });
+
+                alert(document.getElementById('map').innerHTML);
+            }
+
+            function onError  (error) {
+                alert("the code is " + error.code + ". \n" + "message: " + error.message);
+            }
+
 
     //function LoginUser() {
     //    //var Data1 = '{"UserName": "' + $("#txtUsername").val() + '"}';

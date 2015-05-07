@@ -39,70 +39,55 @@
                 try {
                     var latLong = new google.maps.LatLng(27.985856, -81.959907);
 
-                    //var mapOptions = {
-                    //    zoom: 14,
-                    //    center: latLong,
-                    //    mapTypeId: google.maps.MapTypeId.ROADMAP,
-                    //    backgroundColor: '#ffffff',
-                    //    noClear: true,
-                    //    disableDefaultUI: false,
-                    //    keyboardShortcuts: true,
-                    //    disableDoubleClickZoom: false,
-                    //    draggable: true,
-                    //    scrollwheel: true,
-                    //    draggableCursor: 'pointer',
-                    //    draggingCursor: 'crosshair',
-                    //    mapTypeControl: true,
-                    //    //mapTypeControlOptions: {
-                    //    //    style: google.maps.MapTypeControlStyle.HORIZONTAL_MENU,
-                    //    //    position: google.maps.ControlPosition.TOP_LEFT,
-                    //    //    mapTypeIds: [
-                    //    //        google.maps.MapTypeId.ROADMAP
-                    //    //    ]
-                    //    //},
-                    //    navigationControl: true,
-                    //    streetViewControl: true,
-                    //    navigationControlOptions: {
-                    //        position: google.maps.ControlPosition.TOP_LEFT,
-                    //        style: google.maps.NavigationControlStyle.ANDROID
-                    //    },
-                    //    scaleControl: true,
-                    //    scaleControlOptions: {
-                    //        position: google.maps.ControlPosition.TOP_LEFT,
-                    //        style: google.maps.ScaleControlStyle.DEFAULT
-                    //    }
-                    //};
+                    alert(map);
 
                     var mapOptions = {
+                        zoom: 14,
                         center: latLong,
-                        zoom: 13,
-                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                        backgroundColor: '#ffffff',
+                        noClear: true,
+                        disableDefaultUI: false,
+                        keyboardShortcuts: true,
+                        disableDoubleClickZoom: false,
+                        draggable: true,
+                        scrollwheel: true,
+                        draggableCursor: 'pointer',
+                        draggingCursor: 'crosshair',
+                        mapTypeControl: true,
+                        //mapTypeControlOptions: {
+                        //    style: google.maps.MapTypeControlStyle.HORIZONTAL_MENU,
+                        //    position: google.maps.ControlPosition.TOP_LEFT,
+                        //    mapTypeIds: [
+                        //        google.maps.MapTypeId.ROADMAP
+                        //    ]
+                        //},
+                        navigationControl: true,
+                        streetViewControl: true,
+                        navigationControlOptions: {
+                            position: google.maps.ControlPosition.TOP_LEFT,
+                            style: google.maps.NavigationControlStyle.ANDROID
+                        },
+                        scaleControl: true,
+                        scaleControlOptions: {
+                            position: google.maps.ControlPosition.TOP_LEFT,
+                            style: google.maps.ScaleControlStyle.DEFAULT
+                        }
                     };
 
                     var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
-                    //var marker = new google.maps.Marker({
-                    //    position: latLong,
-                    //    map: map,
-                    //    animation: google.maps.Animation.BOUNCE,
-                    //    title: 'Insight Risk Technologies, LLC',
-                    //    icon: 'https://www.chancesrmis.com/um-usa/img/Logos/chancesr.jpg',
-                    //    cursor: 'pointer',
-                    //    draggable: true
-                    //});
-
-                    var locationmarker = {
-                        url: 'image/ubicacion.png',
-                        anchor: new google.maps.Point(16, 0)
-                    }
                     var marker = new google.maps.Marker({
                         position: latLong,
                         map: map,
-                        title: 'my location',
-                        icon: locationmarker
+                        animation: google.maps.Animation.BOUNCE,
+                        title: 'Insight Risk Technologies, LLC',
+                        icon: 'https://www.chancesrmis.com/um-usa/img/Logos/chancesr.jpg',
+                        cursor: 'pointer',
+                        draggable: true
                     });
 
-                    alert('visualizando mapa');
+                    alert(document.getElementById('map_canvas').innerHTML);
 
                 } catch (ex) {
                     alert(ex.message);
