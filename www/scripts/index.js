@@ -33,7 +33,7 @@
 
 
     function onSuccess(position) {
-                alert('ingreso 3');
+
                 var longitude = position.coords.longitude;
                 var latitude = position.coords.latitude;
                 var latLong = new google.maps.LatLng(27.985856, -81.959907);
@@ -84,7 +84,6 @@
                     draggable: true
                 });
 
-                alert(document.getElementById('map').innerHTML);
             }
 
             function onError  (error) {
