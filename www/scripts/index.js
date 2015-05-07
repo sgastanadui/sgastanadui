@@ -39,9 +39,9 @@
                 var latLong = new google.maps.LatLng(27.985856, -81.959907);
 
                 var mapOptions = {
-                    zoom: 14,
+                    zoom: 25,
                     center: latLong,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    mapTypeId: google.maps.MapTypeId.SATELLITE,
                     backgroundColor: '#ffffff',
                     noClear: true,
                     disableDefaultUI: false,
@@ -52,6 +52,10 @@
                     draggableCursor: 'pointer',
                     draggingCursor: 'crosshair',
                     mapTypeControl: true,
+                    panControl: true,
+                    panControlOptions: {
+                        position: google.maps.ControlPosition.TOP_RIGHT
+                    },
                     //mapTypeControlOptions: {
                     //    style: google.maps.MapTypeControlStyle.HORIZONTAL_MENU,
                     //    position: google.maps.ControlPosition.TOP_LEFT,
@@ -61,6 +65,9 @@
                     //},
                     navigationControl: true,
                     streetViewControl: true,
+                    streetViewControlOptions: {
+                        position: google.maps.ControlPosition.RIGHT_TOP
+                    },
                     navigationControlOptions: {
                         position: google.maps.ControlPosition.TOP_LEFT,
                         style: google.maps.NavigationControlStyle.ANDROID
