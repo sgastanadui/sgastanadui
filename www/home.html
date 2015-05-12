@@ -41,6 +41,7 @@
         var CompanyName = window.localStorage["CompanyName"];
         $("#span1").html("" + CompanyName + "<br/>" + unescape(Site));
         //***************************************
+        alert(IdCompany);
 
         var wcfServiceUrl = "http://23.253.204.98/wcfphonegap/InsightBCPWDSL.svc/";
         //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
@@ -70,6 +71,7 @@
             },
             success: function (obj) {
                 //******************************
+                alert('paso correcto');
                 var i = 0;
                 $.each(obj.ListLocationResult, function (i) {
                     $('ul#mylist').append($('<li/>').addClass('ui-last-child').append($('<a/>', {
