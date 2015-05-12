@@ -279,15 +279,16 @@
                                 $("#select_item").val('Select');
                                 $("#textarea-1").val('');
                                 //*************************
-                                //var wpurl = 'commentsert.html?IdCompany=' + IdCompany + '&IdContact=' + IdContact + '';
-                                //*************************
-                                //$("#popupDetail").attr('href', wpurl)
-                                //console.log('wpurl: ' + wpurl);
-                                //$("#popupDetail").click();
-                                //$("#tab1").click();
-                                //*************************
                                 //$.mobile.changePage("default.html");
-                                window.location.href = 'default.html';
+                                //window.location.href = 'default.html';
+                                var IdCompany = window.localStorage["IdCompany"];
+                                var IdSite = $("#hdnIdSite").val();
+                                var Latitude = $("#hdnLatitude").val();
+                                var Longitude = $("#hdnLongitude").val();
+                                var Site = $("#hdnSite").val();
+                                var KeyBCP = $("#hdnKeyword").val();
+                                window.location.href = 'ertpanel.html?IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
+                                //*************************
                             } else {
                                 alert('fail')
                             }
@@ -347,7 +348,7 @@
         <!--</div>-->
 
         <div class="jqm-footer" data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">
-            <p>©ERT Insight Risk Technologies,LLC <span class="jqm-version"></span></p>
+            <p>©BCP Insight Risk Technologies,LLC <span class="jqm-version"></span></p>
         </div>
         <input type="hidden" id="hdnIdSite" />
         <input type="hidden" id="hdnSite" />

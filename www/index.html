@@ -16,6 +16,11 @@
             //***************************************
             $(document).on("pageinit", "#pageindex", function (event) {
                 //***************************************
+                //if (navigator.network.connection.type == Connection.NONE) {
+                //    // No tenemos conexión
+                //    alert('Not found connection internet.');
+                //}
+                //***************************************
                 $("#btnLogin").click(function () {
 
                     if ($("#txtUsername").val().trim() == "") {
@@ -47,7 +52,7 @@
                         contentType: "application/json; charset=utf-8",
                         dataType: "jsonp",
                         beforeSend: function () {
-                            //$("#imgAjaxLoader").show();
+                            $("#imgAjaxLoader").show();
                             $.mobile.loading('show', {
                                 text: 'Loading...',
                                 textVisible: true,
@@ -150,7 +155,7 @@
             </table>
         </div>
         <div class="jqm-footer" data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">
-            ©ERT Insight Risk Technologies,LLC <span class="jqm-version"></span>
+            ©BCP Insight Risk Technologies,LLC <span class="jqm-version"></span>
         </div>
     </div>
 </body>
