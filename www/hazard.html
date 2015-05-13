@@ -12,13 +12,17 @@
     <script src="scripts/common.js"></script>
     <script type="text/javascript">
         //***************************************
+        $(window).on("orientationchange", function () {
+            $('textarea').keyup();
+        });
+        //***************************************
         $(document).on("pageinit", "#hazardID", function (event) {
             //***************************************
             var IdCompany = getUrlVars()["IdCompany"];
             var IdSite = getUrlVars()["IdSite"];
             var Site = getUrlVars()["Site"];
-            var Latitude = getUrlVars()["Latitude"];
-            var Longitude = getUrlVars()["Longitude"];
+            var Latitude = getUrlVars()["LatitudeSite"];
+            var Longitude = getUrlVars()["LongitudeSite"];
             var KeyBCP = getUrlVars()["KeyBCP"];
             var IdAlertsERT = getUrlVars()["IdAlertsERT"];
             var IdHazard = getUrlVars()["IdHazard"];
@@ -27,7 +31,7 @@
             $("#hdnSite").val(unescape(Site));
             $("#hdnLatitude").val(Latitude);
             $("#hdnLongitude").val(Longitude);
-            $("#hdnKeywordERT").val(KeyBCP);
+            $("#hdnKeyword").val(KeyBCP);
             //***************************************
             var CompanyName = window.localStorage["CompanyName"];
             $("#span1").html("" + CompanyName + " <br/>" + unescape(Site));
@@ -40,7 +44,7 @@
                 var Latitude = $("#hdnLatitude").val();
                 var Longitude = $("#hdnLongitude").val();
                 var Site = $("#hdnSite").val();
-                var KeyBCP = $("#hdnKeywordERT").val();
+                var KeyBCP = $("#hdnKeyword").val();
                 window.location.href = 'bcplog.html?IdCompany='+ IdCompany +'&IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
                 //************************************************
             });
@@ -73,10 +77,12 @@
                 success: function (obj) {
                     //******************************
                     //$.each(obj.ListAlertsResult.AlertsERT, populateAlertsERT);
-                    $("#txtHazard").val(obj.SearchHazardResult.HazardName);
-                    $("#txtActivityBy").val(obj.SearchHazardResult.ContactName);
+                    $("#txtHazard").html(obj.SearchHazardResult.HazardName);
+                    $("#txtActivityBy").html(obj.SearchHazardResult.ContactName);
                     $("#txtDescription").val(obj.SearchHazardResult.DescriptionHazard);
                     $("#txtProcedure").val(obj.SearchHazardResult.DescriptionProcedure);
+                    //******************************
+                    $('textarea').keyup();
                     //******************************
                 },
                 complete: function () {
@@ -100,11 +106,13 @@
                 <tr>
                     <td>Hazard:</td>
                     <td>
-                        <input type="text" id="txtHazard" readonly="readonly" />
+                        <!--<input type="text" id="txtHazard" readonly="readonly" />-->
+                        <div id="txtHazard"></div>
                     </td>
                     <td>Activity By:</td>
                     <td>
-                        <input type="text" id="txtActivityBy" readonly="readonly" />
+                        <!--<input type="text" id="txtActivityBy" readonly="readonly" />-->
+                        <div id="txtActivityBy"></div>
                     </td>
                 </tr>
                 <tr>

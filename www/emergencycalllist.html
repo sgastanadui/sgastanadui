@@ -53,8 +53,6 @@
                 //*****************************
                 var IdSite = $("#hdnIdSite").val();
                 var Site = $("#hdnSite").val();
-                var Latitude = $("#hdnLatitude").val();
-                var Longitude = $("#hdnLongitude").val();
                 var KeyBCP = $("#hdnKeyword").val();
                 //*****************************
                 html = html.trim() + '<tr>';
@@ -69,7 +67,7 @@
             };
 
             $("#newpage").bind("pageshow", function (event) {
-
+                //***************************************
                 var IdCompany = window.localStorage["IdCompany"];
                 var Companyname = window.localStorage["CompanyName"];
                 var ContactName = window.localStorage["ContactName"];
@@ -77,8 +75,8 @@
                 //var IdCompany = getUrlVars()["IdCompany"];
                 var IdSite = getUrlVars()["IdSite"];
                 var Site = getUrlVars()["Site"];
-                var Latitude = getUrlVars()["Latitude"];
-                var Longitude = getUrlVars()["Longitude"];
+                var Latitude = getUrlVars()["LatitudeSite"];
+                var Longitude = getUrlVars()["LongitudeSite"];
                 var KeyBCP = getUrlVars()["KeyBCP"];
                 //***************************************
                 $("#hdnIdSite").val(IdSite);

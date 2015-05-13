@@ -12,13 +12,17 @@
     <script src="scripts/common.js"></script>
     <script type="text/javascript">
         //***************************************
+        $(window).on("orientationchange", function () {
+            $('textarea').keyup();
+        });
+        //***************************************
         $(document).on("pageinit", "#hazardID", function (event) {
             //***************************************
             var IdCompany = getUrlVars()["IdCompany"];
             var IdSite = getUrlVars()["IdSite"];
             var Site = getUrlVars()["Site"];
-            var Latitude = getUrlVars()["Latitude"];
-            var Longitude = getUrlVars()["Longitude"];
+            var Latitude = getUrlVars()["LatitudeSite"];
+            var Longitude = getUrlVars()["LongitudeSite"];
             var KeyBCP = getUrlVars()["KeyBCP"];
             var IdAlertsCOOP = getUrlVars()["IdAlertsCOOP"];
             var IdActivityLoss = getUrlVars()["IdActivityLoss"];
@@ -27,7 +31,7 @@
             $("#hdnSite").val(unescape(Site));
             $("#hdnLatitude").val(Latitude);
             $("#hdnLongitude").val(Longitude);
-            $("#hdnKeywordERT").val(KeyBCP);
+            $("#hdnKeyword").val(KeyBCP);
             //***************************************
             var CompanyName = window.localStorage["CompanyName"];
             $("#span1").html("" + CompanyName + " <br/>" + unescape(Site));
@@ -40,7 +44,7 @@
                 var Latitude = $("#hdnLatitude").val();
                 var Longitude = $("#hdnLongitude").val();
                 var Site = $("#hdnSite").val();
-                var KeyBCP = $("#hdnKeywordERT").val();
+                var KeyBCP = $("#hdnKeyword").val();
                 window.location.href = 'bcplog.html?IdCompany='+ IdCompany +'&IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
                 //************************************************
             });
@@ -73,12 +77,14 @@
                 success: function (obj) {
                     //******************************
                     //$.each(obj.ListAlertsResult.AlertsERT, populateAlertsERT);
-                    $("#txtCriticalFunction").val(obj.SearchCriticalFunctionResult.ActivityLoss);
-                    $("#txtActivityBy").val(obj.SearchCriticalFunctionResult.ContactName);
-                    $("#txtMAO").val(obj.SearchCriticalFunctionResult.MAO);
+                    $("#txtCriticalFunction").html(obj.SearchCriticalFunctionResult.ActivityLoss);
+                    $("#txtActivityBy").html(obj.SearchCriticalFunctionResult.ContactName);
+                    $("#txtMAO").html(obj.SearchCriticalFunctionResult.MAO);
                     $("#txtDescription").val(obj.SearchCriticalFunctionResult.Description);
                     $("#txtOutageMenorMAO").val(obj.SearchCriticalFunctionResult.OutageMayorMAO);
                     $("#txtOutageMayorMAO").val(obj.SearchCriticalFunctionResult.OutageMenorMAO);
+                    //******************************
+                    $('textarea').keyup();
                     //******************************
                 },
                 complete: function () {
@@ -102,15 +108,18 @@
                 <tr>
                     <td>Critical Function:</td>
                     <td>
-                        <input type="text" id="txtCriticalFunction" readonly="readonly" />
+                        <!--<input type="text" id="txtCriticalFunction" readonly="readonly" />-->
+                        <div id="txtCriticalFunction"></div>
                     </td>
                     <td>MAO:</td>
                     <td>
-                        <input type="text" id="txtMAO" readonly="readonly" />
+                        <!--<input type="text" id="txtMAO" readonly="readonly" />-->
+                        <div id="txtMAO"></div>
                     </td>
                     <td>Activity By:</td>
                     <td>
-                        <input type="text" id="txtActivityBy" readonly="readonly" />
+                        <!--<input type="text" id="txtActivityBy" readonly="readonly" />-->
+                        <div id="txtActivityBy"></div>
                     </td>
                 </tr>
                 <tr>

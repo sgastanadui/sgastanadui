@@ -28,23 +28,27 @@
             HazardName = this.HazardName;
             Latitude = this.Latitude;
             Longitude = this.Longitude;
+            //*****************************
+            var LatitudeSite = $("#hdnLatitude").val();
+            var LongitudeSite = $("#hdnLongitude").val();
+            //*****************************
             DateRegister = this.DateRegister;
             var KeyBCP = $("#hdnKeyword").val();
             //*****************************
             html = html.trim() + '<tr>';
             html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">' + DateRegister.trim() + '</td>';
             html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">';
-            html = html.trim() + ' <a href="#" onclick="window.location.href = '+ "'" +'map.html?IdCompany=' + IdCompany + '&IdSite=' + IdLocation + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + LocationName + '&KeyBCP=' + KeyBCP + ''+ "'" +'">' + LocationName.trim() + '</a>';
+            html = html.trim() + ' <a href="#" onclick="window.location.href = '+ "'" +'map.html?IdCompany=' + IdCompany + '&IdSite=' + IdLocation + '&Latitude=' + Latitude + '&LatitudeSite=' + LatitudeSite + '&Longitude=' + Longitude + '&LongitudeSite=' + LongitudeSite + '&Site=' + LocationName + '&KeyBCP=' + KeyBCP + ''+ "'" +'">' + LocationName.trim() + '</a>';
             html = html.trim() + ' </td>';
             html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">' + ContactName.trim() + '</td>';
             html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">';
-            html = html.trim() + ' <a href="#" onclick="window.location.href = ' + "'" + 'hazard.html?IdHazard='+ IdHazard +'&IdAlertsERT=' + IdAlertsERT + '&IdCompany=' + IdCompany + '&IdSite=' + IdLocation + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + LocationName + '&KeyBCP=' + KeyBCP + '' + "'" + '">' + HazardName.trim() + '</a>';
+            html = html.trim() + ' <a href="#" onclick="window.location.href = ' + "'" + 'hazard.html?IdHazard=' + IdHazard + '&IdAlertsERT=' + IdAlertsERT + '&IdCompany=' + IdCompany + '&IdSite=' + IdLocation + '&Latitude=' + Latitude + '&LatitudeSite=' + LatitudeSite + '&Longitude=' + Longitude + '&LongitudeSite=' + LongitudeSite + '&Site=' + LocationName + '&KeyBCP=' + KeyBCP + '' + "'" + '">' + HazardName.trim() + '</a>';
             html = html.trim() + ' </td>';
             html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">';
-            html = html.trim() + ' <a href="#"  onclick="window.location.href = ' + "'" + 'ertpanel.html?IdHazard=' + IdHazard + '&IdAlertsERT=' + IdAlertsERT + '&IdCompany=' + IdCompany + '&IdSite=' + IdLocation + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + LocationName + '&KeyBCP=' + KeyBCP + '' + "'" + '">ERT</a>';
+            html = html.trim() + ' <a href="#"  onclick="window.location.href = ' + "'" + 'ertpanel.html?IdHazard=' + IdHazard + '&IdAlertsERT=' + IdAlertsERT + '&IdCompany=' + IdCompany + '&IdSite=' + IdLocation + '&Latitude=' + Latitude + '&LatitudeSite=' + LatitudeSite + '&Longitude=' + Longitude + '&LongitudeSite=' + LongitudeSite + '&Site=' + LocationName + '&KeyBCP=' + KeyBCP + '' + "'" + '">ERT</a>';
             html = html.trim() + ' </td>';
             html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">';
-            html = html.trim() + ' <a href="#"  onclick="window.location.href = ' + "'" + 'emergencycalllist.html?IdCompany=' + IdCompany + '&IdSite=' + IdLocation + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + LocationName + '&KeyBCP=' + KeyBCP + '' + "'" + '">ECL</a>';
+            html = html.trim() + ' <a href="#"  onclick="window.location.href = ' + "'" + 'emergencycalllist.html?IdCompany=' + IdCompany + '&IdSite=' + IdLocation + '&Latitude=' + Latitude + '&LatitudeSite=' + LatitudeSite + '&Longitude=' + Longitude + '&LongitudeSite=' + LongitudeSite + '&Site=' + LocationName + '&KeyBCP=' + KeyBCP + '' + "'" + '">ECL</a>';
             html = html.trim() + ' </td>';
             html = html.trim() + ' </tr>';
             //*****************************
@@ -64,17 +68,21 @@
             ActivityLoss = this.ActivityLoss;
             Latitude = this.Latitude;
             Longitude = this.Longitude;
+            //*****************************
+            var LatitudeSite = $("#hdnLatitude").val();
+            var LongitudeSite = $("#hdnLongitude").val();
+            //*****************************
             DateRegister = this.DateRegister;
             var KeyBCP = $("#hdnKeyword").val();
             //*****************************
             html = html.trim() + '<tr>';
             html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">' + DateRegister.trim() + '</td>';
             html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">';
-            html = html.trim() + ' <a href="#" onclick="window.location.href = ' + "'" + 'map.html?IdCompany=' + IdCompany + '&IdSite=' + IdLocation + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + LocationName + '&KeyBCP=' + KeyBCP + '' + "'" + '">' + LocationName.trim() + '</a>';
+            html = html.trim() + ' <a href="#" onclick="window.location.href = ' + "'" + 'map.html?IdCompany=' + IdCompany + '&IdSite=' + IdLocation + '&Latitude=' + Latitude + '&LatitudeSite=' + LatitudeSite + '&Longitude=' + Longitude + '&LongitudeSite=' + LongitudeSite + '&Site=' + LocationName + '&KeyBCP=' + KeyBCP + '' + "'" + '">' + LocationName.trim() + '</a>';
             html = html.trim() + ' </td>';
             html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">' + ContactName.trim() + '</td>';
             html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">';
-            html = html.trim() + ' <a href="#" onclick="window.location.href = ' + "'" + 'criticalfunction.html?IdActivityLoss=' + IdActivityLoss + '&IdAlertsCOOP=' + IdAlertsCOOP + '&IdCompany=' + IdCompany + '&IdSite=' + IdLocation + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + LocationName + '&KeyBCP=' + KeyBCP + '' + "'" + '">' + ActivityLoss.trim() + '</a>';
+            html = html.trim() + ' <a href="#" onclick="window.location.href = ' + "'" + 'criticalfunction.html?IdActivityLoss=' + IdActivityLoss + '&IdAlertsCOOP=' + IdAlertsCOOP + '&IdCompany=' + IdCompany + '&IdSite=' + IdLocation + '&Latitude=' + Latitude + '&LatitudeSite=' + LatitudeSite + '&Longitude=' + Longitude + '&LongitudeSite=' + LongitudeSite + '&Site=' + LocationName + '&KeyBCP=' + KeyBCP + '' + "'" + '">' + ActivityLoss.trim() + '</a>';
             html = html.trim() + ' </td>';
             html = html.trim() + ' </tr>';
             //*****************************

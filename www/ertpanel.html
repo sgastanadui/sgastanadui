@@ -59,7 +59,6 @@
                 //*****************************
                 html = html.trim() + '<tr>';
                 html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">';
-                //html = html.trim() + ' <a href="commentsert.html?IdContact=' + IdContact + '&IdCompany=' + IdCompany + '" data-transition="none">' + Name.trim() + '</a>';
                 html = html.trim() + ' <a href="#" data-transition="none" onclick="window.location.href = ' + "'" + 'commentsert.html?IdContact=' + IdContact + '&IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP + '' + "'" + '">' + Name.trim() + '</a>';
                 html = html.trim() + ' </td>';
                 html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">' + Rol.trim() + '</td>';
@@ -91,8 +90,8 @@
                 //var IdCompany = getUrlVars()["IdCompany"];
                 var IdSite = getUrlVars()["IdSite"];
                 var Site = getUrlVars()["Site"];
-                var Latitude = getUrlVars()["Latitude"];
-                var Longitude = getUrlVars()["Longitude"];
+                var Latitude = getUrlVars()["LatitudeSite"];
+                var Longitude = getUrlVars()["LongitudeSite"];
                 var KeyBCP = getUrlVars()["KeyBCP"];
                 //***************************************
                 $("#hdnIdSite").val(IdSite);
@@ -125,13 +124,13 @@
                 var wcfServiceUrl = "http://23.253.204.98/wcfphonegap/AutenticationMobile.svc/";
                 //var wcfServiceUrl = "http://localhost:10786/AutenticationMobile.svc/";
 
-                var urlk1 = wcfServiceUrl + "ListMember?IdCompany=" + IdCompany + "&TypeMember=2&IdInsightBCP=-1";
+                var urlk1 = wcfServiceUrl + "ListMember?IdCompany=" + IdCompany + "&TypeMember=1&IdInsightBCP=-1";
 
                 $.ajax({
                     cache: true,
                     url: urlk1,
                     crossDomain: true,
-                    data: "{ IdCompany: " + IdCompany + ", TypeMember: 2, IdInsightBCP: -1 }",
+                    data: "{ IdCompany: " + IdCompany + ", TypeMember: 1, IdInsightBCP: -1 }",
                     type: "GET",
                     jsonpCallback: "lsobj",
                     contentType: "application/json; charset=utf-8",

@@ -184,8 +184,9 @@ button:active {
 
 .define-textarea {
 font-size: 1em !important;
-border-color: #cccccc !important;
+border-color: #ffffff !important;
 border-radius: 5px;
+outline: none;
 }
 
 .ui-btn-inner {

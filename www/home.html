@@ -72,10 +72,12 @@
             success: function (obj) {
                 //******************************
                 var i = 0;
+                //******************************
                 $.each(obj.ListLocationResult, function (i) {
                     $('ul#mylist').append($('<li/>').addClass('ui-last-child').append($('<a/>', {
                         'href': '#',
                         'text': obj.ListLocationResult[i].LocationName,
+                        'value': obj.ListLocationResult[i].IdLocation,
                         'click': function (e) {
                             SelectSite(obj.ListLocationResult[i].IdLocation, obj.ListLocationResult[i].Latitude,
                                        obj.ListLocationResult[i].Longitude, escape(obj.ListLocationResult[i].LocationName),
@@ -85,7 +87,28 @@
                     }).attr('data-rel', 'close').addClass('ui-btn ui-btn-icon-right ui-icon-carat-r')));
                 });
                 //******************************
-                //$("#imgAjaxLoaderComments").hide();
+                var selected = false;
+                //******************************
+                if ($("#hdnSite").val() != '') {
+                    selected = true;
+                }
+                $("li").each(function (index) {
+                    if (selected == true) {
+                        if ($(this).text().trim() == $("#hdnSite").val().trim()) {
+                            //alert(index + "Selected: " + $(this).text() + " value: " + $(this).val());
+                            SelectSite(obj.ListLocationResult[index - 1].IdLocation, obj.ListLocationResult[index - 1].Latitude,
+                                       obj.ListLocationResult[index - 1].Longitude, escape(obj.ListLocationResult[index - 1].LocationName),
+                                       obj.ListLocationResult[index - 1].KeyBCP);
+                        }
+                    } else {
+                        if (index == 1) {
+                            //alert(index + "No Selecetd: " + $(this).text() + " value: " + $(this).val());
+                            SelectSite(obj.ListLocationResult[index - 1].IdLocation, obj.ListLocationResult[index - 1].Latitude,
+                                       obj.ListLocationResult[index - 1].Longitude, escape(obj.ListLocationResult[index - 1].LocationName),
+                                       obj.ListLocationResult[index - 1].KeyBCP);
+                        }
+                    }
+                });
                 //******************************
             },
             complete: function () {
@@ -97,25 +120,23 @@
         $("#btnActivateERP").off("click");
         $("#btnActivateERP").click(function () {
             //************************************************
+            var IdCompany = window.localStorage["IdCompany"];
+            var IdSite = $("#hdnIdSite").val();
             var Latitude = $("#hdnLatitude").val();
             var Longitude = $("#hdnLongitude").val();
-            var IdSite = $("#hdnIdSite").val();
             var Site = $("#hdnSite").val();
             var KeyBCP = $("#hdnKeyword").val();
             //************************************************
             if (IdSite.trim() == '') {
-                alert('Select Site');
+                alert('Please select site.');
                 return false;
             }
             //************************************************
             if (Site.trim() == '') {
-                alert('Select Site');
+                alert('Please select site.');
                 return false;
             }
             //************************************************
-            var IdCompany = window.localStorage["IdCompany"];
-            var IdSite = $("#hdnIdSite").val();
-            var Site = $("#hdnSite").val();
             window.location.href = 'activateerp.html?IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
             //************************************************
         });
@@ -125,25 +146,23 @@
         $("#btnActivateCOOP").off("click");
         $("#btnActivateCOOP").click(function () {
             //************************************************
+            var IdCompany = window.localStorage["IdCompany"];
+            var IdSite = $("#hdnIdSite").val();
             var Latitude = $("#hdnLatitude").val();
             var Longitude = $("#hdnLongitude").val();
-            var IdSite = $("#hdnIdSite").val();
             var Site = $("#hdnSite").val();
             var KeyBCP = $("#hdnKeyword").val();
             //************************************************
             if (IdSite.trim() == '') {
-                alert('Select Site');
+                alert('Please select site.');
                 return false;
             }
             //************************************************
             if (Site.trim() == '') {
-                alert('Select Site');
+                alert('Please select site.');
                 return false;
             }
             //************************************************
-            var IdCompany = window.localStorage["IdCompany"];
-            var IdSite = $("#hdnIdSite").val();
-            var Site = $("#hdnSite").val();
             window.location.href = 'activatecoop.html?IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
             //************************************************
         });
@@ -153,25 +172,23 @@
         $("#btnBCPLog").off("click");
         $("#btnBCPLog").click(function () {
             //************************************************
+            var IdCompany = window.localStorage["IdCompany"];
+            var IdSite = $("#hdnIdSite").val();
             var Latitude = $("#hdnLatitude").val();
             var Longitude = $("#hdnLongitude").val();
-            var IdSite = $("#hdnIdSite").val();
             var Site = $("#hdnSite").val();
             var KeyBCP = $("#hdnKeyword").val();
             //************************************************
             if (IdSite.trim() == '') {
-                alert('Select Site');
+                alert('Please select site.');
                 return false;
             }
             //************************************************
             if (Site.trim() == '') {
-                alert('Select Site');
+                alert('Please select site.');
                 return false;
             }
             //************************************************
-            var IdCompany = window.localStorage["IdCompany"];
-            var IdSite = $("#hdnIdSite").val();
-            var Site = $("#hdnSite").val();
             window.location.href = 'bcplog.html?IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
             //************************************************
         });

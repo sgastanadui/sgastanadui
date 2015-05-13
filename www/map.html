@@ -81,14 +81,14 @@
                     draggable: true
                 });
 
-                var panorama;
-                panorama = map.getStreetView();
-                panorama.setPosition(latlng);
-                panorama.setPov(/** @type {google.maps.StreetViewPov} */({
-                    heading: 265,
-                    pitch: 0
-                }));
-                panorama.setVisible(true);
+                //var panorama;
+                //panorama = map.getStreetView();
+                //panorama.setPosition(latlng);
+                //panorama.setPov(/** @type {google.maps.StreetViewPov} */({
+                //    heading: 265,
+                //    pitch: 0
+                //}));
+                //panorama.setVisible(true);
 
                 google.maps.event.addListener(marker, 'mouseover', function () {
                     marker.setTitle("Hi");
@@ -107,15 +107,15 @@
             var IdCompany = getUrlVars()["IdCompany"];
             var IdSite = getUrlVars()["IdSite"];
             var Site = getUrlVars()["Site"];
-            var Latitude = getUrlVars()["Latitude"];
-            var Longitude = getUrlVars()["Longitude"];
+            var Latitude = getUrlVars()["LatitudeSite"];
+            var Longitude = getUrlVars()["LongitudeSite"];
             var KeyBCP = getUrlVars()["KeyBCP"];
             //***************************************
             $("#hdnIdSite").val(IdSite);
             $("#hdnSite").val(unescape(Site));
             $("#hdnLatitude").val(Latitude);
             $("#hdnLongitude").val(Longitude);
-            $("#hdnKeywordERT").val(KeyBCP);
+            $("#hdnKeyword").val(KeyBCP);
             //***************************************
             var CompanyName = window.localStorage["CompanyName"];
             $("#span1").html("" + CompanyName + " <br/>" + unescape(Site));
@@ -128,7 +128,7 @@
                 var Latitude = $("#hdnLatitude").val();
                 var Longitude = $("#hdnLongitude").val();
                 var Site = $("#hdnSite").val();
-                var KeyBCP = $("#hdnKeywordERT").val();
+                var KeyBCP = $("#hdnKeyword").val();
                 window.location.href = 'bcplog.html?IdCompany='+ IdCompany +'&IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
                 //************************************************
             });
