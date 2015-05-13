@@ -187,6 +187,7 @@ font-size: 1em !important;
 border-color: #ffffff !important;
 border-radius: 5px;
 outline: none;
+width:100%;
 }
 
 .ui-btn-inner {

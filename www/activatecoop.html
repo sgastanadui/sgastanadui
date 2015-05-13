@@ -92,9 +92,14 @@
                 infowindow.open(map, marker);
                 google.maps.event.addListener(marker, 'click', function () {
                     infowindow.open(map, marker);
+                    var pos = marker.getPosition();
+                    var lat = pos.lat();
+                    var lng = pos.lng();
+                    $("#hdnLatitudeCOOP").val(lat);
+                    $("#hdnLongitudeCOOP").val(lng);
                 });
 
-                google.maps.event.addListener(marker, 'mouseover', function () {
+                google.maps.event.addListener(marker, 'drag', function () {
                     marker.setTitle(unescape(Site));
                     var pos = marker.getPosition();
                     var lat = pos.lat();
