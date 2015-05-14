@@ -2,9 +2,7 @@
 <widget id="com.chancesrmis.bcpmobile" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>InsightBCPMobile</name>
     <description>BCP Dashboard</description>
-    <author email="santiagogerman@hotmail.com" href="http://phonegap.com">
-      Ing. Santiago Gastañadui Lujan
-    </author>
+    <author email="santiagogerman@hotmail.com" href="http://phonegap.com">Ing. Santiago Gastañadui Lujan</author>
     <content src="index.html" />
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
@@ -67,7 +65,16 @@
     <gap:splash gap:platform="ios" height="1024" src="www/res/screen/ios/screen-ipad-portrait.png" width="768" />
     <gap:splash gap:platform="ios" height="768" src="www/res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="winphone" src="www/res/screen/windows-phone/screen-portrait.jpg" />
-    <access origin="*" />
+    <feature name="Notification">
+      <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
+    <feature name="Vibration">
+      <param name="android-package" value="org.apache.cordova.vibration.Vibration" />
+    </feature>
+    <feature name="Notification">
+      <param name="ios-package" value="CDVNotification" />
+    </feature>
+  <access origin="*" />
     <!-- These are needed in Cordova 3.6 and newer for Android -->
     <access origin="mailto:*" launch-external="yes"/>
     <access origin="tel:*" launch-external="yes"/>  
